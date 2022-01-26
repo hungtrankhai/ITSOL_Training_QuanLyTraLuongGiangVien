@@ -8,22 +8,30 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             TeachManagement teachManagement = new TeachManagement();
 
-
             int choose;
             do{
                 showMenu();
-                choose = Integer.parseInt(scanner.nextLine());
+                choose = scanner.nextInt();
 
                 switch(choose){
                     case 1:
-                        teachManagement.inputInfoSubject();
+                        System.out.println("Nhập số lượng môn học: ");
+                        int soLuongMh = scanner.nextInt();
+                        for (int i=0; i <soLuongMh;i++){
+                            teachManagement.inputInfoSubject();
+                        }
+                        teachManagement.showInfoSubject();
 
                         break;
 
                     case 2:
+                        System.out.println("Nhập số lượng GV: ");
+                        int soLuongGv = scanner.nextInt();
+                        for (int i=0; i <soLuongGv;i++){
+                            teachManagement.inputInfoTeacher();
+                        }
 
-                        teachManagement.inputInfoTeacher();
-
+                        teachManagement.showInfoTeacher();
 
                         break;
 

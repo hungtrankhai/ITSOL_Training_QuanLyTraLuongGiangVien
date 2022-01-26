@@ -42,6 +42,9 @@ Scanner scanner = new Scanner(System.in);
         subjects[soMon]= subject;
         soMon++;
 
+    }
+
+    public void showInfoSubject(){
         for(int i=0;i<soMon;i++){
             System.out.println(subjects[i].toString());
         }
@@ -86,6 +89,9 @@ Scanner scanner = new Scanner(System.in);
         teachers[soGV]=teacher;
         soGV++;
 
+    }
+
+    public void showInfoTeacher(){
         for(int i=0;i<soGV;i++){
             System.out.println(teachers[i].toString());
         }
