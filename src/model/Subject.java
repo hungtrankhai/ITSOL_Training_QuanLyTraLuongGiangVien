@@ -1,9 +1,11 @@
 package model;
 
+import java.util.Scanner;
+
 public class Subject {
     private int subjectId;
     private String subjectName;
-    private int tongSoTiet,soTietLyThuyet,mucKinhPhi;
+    private int soTiet,soTietLyThuyet,mucKinhPhi;
     private static int id=100;
 
     public Subject(){}
@@ -11,10 +13,46 @@ public class Subject {
 
     public Subject(String subjectName, int tongSoTiet, int soTietLyThuyet, int mucKinhPhi) {
         this.subjectId = id++;
-        this.tongSoTiet = tongSoTiet;
+        this.soTiet = soTiet;
         this.soTietLyThuyet = soTietLyThuyet;
         this.mucKinhPhi = mucKinhPhi;
     }
+
+    public void inputInfoSubject(){
+        this.subjectId = id++;
+        System.out.println("Nhập tên môn học: ");
+        this.subjectName = new Scanner(System.in).nextLine();
+        boolean check = true;
+        System.out.println("Nhập tổng số tiết học: ");
+        do {
+            this.soTiet = new Scanner(System.in).nextInt();
+            if (this.soTiet <= 0) {
+                System.out.print("Tổng số tiết lớn hơn 0! Nhập lại: ");
+                check = false;
+            }
+        } while (!check);
+        System.out.println("Nhập số tiết lý thuyết: ");
+        do {
+            this.soTietLyThuyet = new Scanner(System.in).nextInt();
+            if (this.soTietLyThuyet <= 0) {
+                System.out.print("Số tiết lý thuyết lớn hơn 0! Nhập lại: ");
+                check = false;
+            }
+        } while (!check);
+        System.out.println("Nhập mức kinh phí (lý thuyết): ");
+        do {
+            this.mucKinhPhi = new Scanner(System.in).nextInt();
+            if (this.mucKinhPhi <= 0) {
+                System.out.print("Mức kinh phí lớn hơn 0! Nhập lại: ");
+                check = false;
+            }
+        } while (!check);
+
+
+    }
+
+
+
 
     public int getSubjectId() {
         return subjectId;
@@ -32,12 +70,12 @@ public class Subject {
         this.subjectId = subjectId;
     }
 
-    public int getTongSoTiet() {
-        return tongSoTiet;
+    public int getSoTiet() {
+        return soTiet;
     }
 
-    public void setTongSoTiet(int tongSoTiet) {
-        this.tongSoTiet = tongSoTiet;
+    public void setSoTiet(int soTiet) {
+        this.soTiet = soTiet;
     }
 
     public int getSoTietLyThuyet() {
@@ -68,7 +106,7 @@ public class Subject {
     public String toString() {
         return "Subject{" +
                 "subjectId=" + subjectId +
-                ", tongSoTiet=" + tongSoTiet +
+                ", tongSoTiet=" + soTiet +
                 ", soTietLyThuyet=" + soTietLyThuyet +
                 ", mucKinhPhi=" + mucKinhPhi +
                 '}';

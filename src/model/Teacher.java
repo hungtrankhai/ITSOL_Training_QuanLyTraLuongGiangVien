@@ -1,25 +1,33 @@
 package model;
 
-public class Teacher {
-    private int teacherId;
-    private String teacherName, address, phoneNumber;
-    private Level level;
+import service.TeacherService;
 
-    private static int id=100;
+import java.util.Scanner;
+
+public class Teacher extends Person implements TeacherService {
+    private int teacherId;
+    private Level level;
+    private float salary;
+
+    private static int sId=100;
 
     public Teacher(){
 
     }
 
-    public Teacher(String teacherName, String address, String phoneNumber, Level level) {
-        this.teacherId = id++;
-        this.teacherName = teacherName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+    public Teacher(int teacherId, Level level) {
+
+        this.teacherId = sId++;
         this.level = level;
     }
 
+    public float getSalary() {
+        return salary;
+    }
 
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
 
     public int getTeacherId() {
         return teacherId;
@@ -29,28 +37,41 @@ public class Teacher {
         this.teacherId = teacherId;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    public void inputInfo(){
+        this.teacherId = sId++;
+        super.inputInfo();
+        System.out.print("\n Nhập trình độ: \n 1: là GS-TS \n 2: là PGS-TS \n 3: là GIANGVIENCHINH \n 4: là THACSI");
+        int nhapLevel = new Scanner(System.in).nextInt();
+        do {
+            switch (nhapLevel) {
+                case 1:
+                    level = Level.GSTS;
+                    break;
+                case 2:
+                    level = Level.PGSTS;
+                    break;
+                case 3:
+                    level = Level.GIANGVIENCHINH;
+                    break;
+                case 4:
+                    level = Level.THACSI;
+                    break;
+            }
+        }while (nhapLevel < 0 && nhapLevel >4);
+
+    }
+    @Override
+    public String toString() {
+        super.toString();
+        return "Teacher{" +
+                "id=" + teacherId +
+                ", level='" + level + '\'' +
+                '}';
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
+    @Override
+    public void tinhSalary() {
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
 //    public String getLevel() {
@@ -61,22 +82,5 @@ public class Teacher {
 //        this.level = level;
 //    }
 
-    public static int getId() {
-        return id;
-    }
 
-    public static void setId(int id) {
-        Teacher.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "teacherId=" + teacherId +
-                ", teacherName='" + teacherName + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", level='" + level + '\'' +
-                '}';
-    }
 }

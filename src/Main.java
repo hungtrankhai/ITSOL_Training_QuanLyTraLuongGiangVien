@@ -1,12 +1,11 @@
-import service.TeachManagement;
-
 import java.util.Scanner;
 
 public class Main {
-        public static void main(String[] args) {
 
+        public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
-            TeachManagement teachManagement = new TeachManagement();
+            Management management = new Management();
+
 
             int choose;
             do{
@@ -15,41 +14,36 @@ public class Main {
 
                 switch(choose){
                     case 1:
-                        System.out.println("Nhập số lượng môn học: ");
-                        int soLuongMh = scanner.nextInt();
-                        for (int i=0; i <soLuongMh;i++){
-                            teachManagement.inputInfoSubject();
-                        }
-                        teachManagement.showInfoSubject();
-
+                        management.createSubject();
+                        management.showInfoSubject();
                         break;
 
                     case 2:
-                        System.out.println("Nhập số lượng GV: ");
-                        int soLuongGv = scanner.nextInt();
-                        for (int i=0; i <soLuongGv;i++){
-                            teachManagement.inputInfoTeacher();
-                        }
-
-                        teachManagement.showInfoTeacher();
+                        management.createTeacher();
+                        management.showInfoTeacher();
 
                         break;
 
                     case 3:
+                        management.management();
+                        management.showManagement();
 
-                        teachManagement.management();
                         break;
 
                     case 4:
 
                         break;
+
+                    case 5:
+                        management.tinhLuong();
+                        break;
                 }
-            }while( choose != 4);
+            }while( choose != 5);
         }
 
 
         static void showMenu(){
-            System.out.println("1. Nhập ds môn học \n2. Nhập ds giáo viên \n3. Xem management \n4. Thoat");
+            System.out.println("1. Nhập ds môn học \n2. Nhập ds giáo viên \n3. Xem management \n4. Sort \n5.Bảng lương giáo viên.");
             System.out.println("__Bạn cần làm gì ?___");
         }
 
